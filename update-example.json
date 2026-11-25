@@ -1,0 +1,7 @@
+{
+  "versionCode": 2,
+  "versionName": "1.1.0",
+  "notes": "Melhorias de desempenho e correções no BRAFLIX.",
+  "apkUrl": "https://SEU-DOMINIO.EXEMPLO/braflix/BRAFLIX-v1.1.0.apk",
+  "sha256": "SUBSTITUA_PELO_SHA256_DE_64_CARACTERES_DO_APK"
+}
