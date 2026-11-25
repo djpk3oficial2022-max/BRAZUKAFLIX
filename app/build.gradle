@@ -1,0 +1,47 @@
+plugins { id 'com.android.application' }
+
+def requestedCode = (project.findProperty('braflixVersionCode') ?: '1').toString().toInteger()
+def requestedName = (project.findProperty('braflixVersionName') ?: '1.0.0').toString()
+def feed = (project.findProperty('braflixUpdateFeed') ?: '').toString()
+def androidString = { s -> '\"' + s.replace('\\','\\\\').replace('"','\\"') + '\"' }
+
+android {
+    namespace 'com.braflix.tv'
+    compileSdk 35
+    buildFeatures { buildConfig true }
+    defaultConfig {
+        applicationId 'com.braflix.tv'
+        minSdk 23
+        targetSdk 35
+        versionCode requestedCode
+        versionName requestedName
+        buildConfigField 'String', 'UPDATE_FEED_URL', androidString(feed)
+    }
+    signingConfigs {
+        release {
+            def ks = System.getenv('BRAFLIX_KEYSTORE_FILE')
+            if (ks) {
+                storeFile file(ks)
+                storePassword System.getenv('BRAFLIX_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('BRAFLIX_KEY_ALIAS')
+                keyPassword System.getenv('BRAFLIX_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (System.getenv('BRAFLIX_KEYSTORE_FILE')) signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+dependencies {
+    implementation 'androidx.media3:media3-exoplayer:1.5.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.5.1'
+    implementation 'androidx.media3:media3-ui:1.5.1'
+    implementation 'androidx.core:core:1.15.0'
+}

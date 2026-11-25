@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#101423" android:orientation="vertical" android:padding="16dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="STREAM M3U" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="26sp" android:paddingBottom="14dp"/>
+    <EditText android:id="@+id/source" android:layout_width="match_parent" android:layout_height="wrap_content" android:singleLine="true" android:inputType="textUri" android:hint="Cole a URL da sua lista M3U" android:textColor="#FFFFFF" android:textColorHint="#AAB2C2"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <Button android:id="@+id/load" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Carregar URL"/>
+        <Button android:id="@+id/openFile" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Abrir arquivo"/>
+    </LinearLayout>
+    <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Adicione sua lista para começar" android:textColor="#B9C2D5" android:padding="8dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <Button android:id="@+id/tv" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="TV"/>
+        <Button android:id="@+id/movies" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Filmes"/>
+        <Button android:id="@+id/series" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Séries"/>
+    </LinearLayout>
+    <EditText android:id="@+id/search" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Buscar títulos ou categorias" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#AAB2C2"/>
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true"><LinearLayout android:id="@+id/list" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/></ScrollView>
+</LinearLayout>
